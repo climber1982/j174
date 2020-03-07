@@ -1,12 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<parent>
+    <groupId>lovo</groupId>
+    <artifactId>j174</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</parent>
     <modelVersion>4.0.0</modelVersion><!--maven2.0必须是这样写，现在是maven2唯一支持的版本 -->
     <!-- The Basics -->
     <groupId>lovo</groupId><!--指定组名,例如：org.apache.maven -->
     <artifactId>springService</artifactId><!--指定工程名例如：app -->
-    <packaging>pom</packaging><!--The current core packaging values are: pom,
+    <packaging>war</packaging><!--The current core packaging values are: pom,
 		jar, maven-plugin, ejb, war, ear, rar, par -->
     <version>0.0.1-SNAPSHOT</version>
 
