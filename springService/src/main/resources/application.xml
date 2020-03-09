@@ -21,7 +21,7 @@
                     http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
        default-lazy-init="true">
    <context:component-scan base-package="com.lovo.ss.service"></context:component-scan>
-   <context:property-placeholder location="jdbc.properties"></context:property-placeholder>
+   <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
    <!--spring提供的数据源对象，可以帮助我们连接数据库-->
    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
       <property name="url" value="${jdbc_url}"></property>
