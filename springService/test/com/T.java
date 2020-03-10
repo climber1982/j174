@@ -14,10 +14,9 @@ public class T {
     public  void test(){
         ClassPathXmlApplicationContext context=
                 new ClassPathXmlApplicationContext("application.xml");
-        IUserService userDao= (IUserService) context.getBean("userService");
-        List<UserEntity> list= userDao.getListUser();
-        for (UserEntity u:list) {
-            System.out.println(u.getAge());
-        }
+        IUserService service= (IUserService) context.getBean("userService");
+        UserEntity u= service.getUserByName("zy");
+       System.out.println(u);
+
     }
 }

@@ -8,4 +8,8 @@
   <select id="getListUser" resultType="userEntity">
          select * from sys_user;
   </select>
+
+    <select id="getUserByName" resultType="userEntity">
+            select * from sys_user where userName=#{param1}
+    </select>
 </mapper>

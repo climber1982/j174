@@ -10,4 +10,11 @@ public interface IUserDao {
      * @return
      */
     public List<UserEntity> getListUser();
+
+    /**
+     * 根据用户名返回对象
+     * @param userName
+     * @return
+     */
+    public UserEntity getUserByName(String userName);
 }

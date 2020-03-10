@@ -10,4 +10,11 @@ public interface IUserService {
      * @return
      */
     public List<UserEntity> getListUser();
+
+    /**
+     * 根据用户查询用户对象
+     * @param userName
+     * @return
+     */
+    public UserEntity getUserByName(String userName);
 }

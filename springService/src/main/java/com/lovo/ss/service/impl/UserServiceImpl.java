@@ -17,4 +17,9 @@ public class UserServiceImpl implements IUserService {
     public List<UserEntity> getListUser() {
         return userDao.getListUser();
     }
+
+    @Override
+    public UserEntity getUserByName(String userName) {
+        return userDao.getUserByName(userName);
+    }
 }

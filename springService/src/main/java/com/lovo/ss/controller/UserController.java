@@ -19,5 +19,17 @@ public class UserController {
        return  userService.getListUser();
     }
 
+    @RequestMapping("{userName}/getUserByName.lovo")
+    public UserEntity  getUserByName(@PathVariable("userName") String userName){
+
+        return userService.getUserByName(userName);
+    }
+
+    @RequestMapping("addUser.lovo")
+    public String addUser(UserEntity userEntity){
+        System.out.println(userEntity.getUserName());
+        //保存到数据库。。。。。
+        return "ok";
+    }
 
 }
