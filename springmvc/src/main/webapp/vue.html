@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <div id="vid">
+         {{info}}
+        <span>用户：{{userName}}</span><p/>
+       <span>密码：{{password}}</span><p/>
+       <span>年龄：{{age}}</span><p/>
+       <input type="button" value="点击我获取用户信息" @click="getUser('a')" />
+   </div>
+
+
+
+   <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+   <!--AJAX-->
+   <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+   <script>
+
+       new Vue({
+           el:"#vid",
+           data:{
+             info:"hello vue",
+               userName:"",
+               password:"",
+               age:""
+           },
+           methods:{
+               getUser:function (str) {
+                   //发送get请求
+                   this.$http.get('getUserByName.lovo?userName=zy').then(function(result){
+                      var r= result.body;
+                     //把json字符串转换为json对象
+                    var json_r=   JSON.parse(r);
+                    //填充数据
+                       this.userName=json_r.userName;
+                       this.password=json_r.password;
+                       this.age=json_r.age;
+                   },function(){
+                       console.log('请求失败处理');
+                   });
+               }
+           }
+       });
+
+   </script>
+
+
+</body>
+</html>
