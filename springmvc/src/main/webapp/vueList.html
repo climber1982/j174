@@ -6,7 +6,7 @@
 </head>
 <body>
       <div id="lid">
-          {{info2}}
+          {{info2.userName}}
               <table border="1">
                   <tr>
                       <td>用户名</td>
@@ -33,11 +33,10 @@
               info2:""
           },
           mounted:function () {
-
+               var obj=this;
               axios.get('getListUser.lovo')
                   .then(function (response) {
-
-                      this.info=JSON.parse(response.data);
+                       obj.info=JSON.parse(response.data);
                        this.info2=response.data;
                   })
                   .catch(function (error) {
