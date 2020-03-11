@@ -19,7 +19,6 @@
    <!--AJAX-->
    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
    <script>
-
        new Vue({
            el:"#vid",
            data:{
@@ -43,6 +42,10 @@
                        console.log('请求失败处理');
                    });
                }
+           },
+           //created
+           mounted:function () {
+                alert("hello vue");
            }
        });
 
