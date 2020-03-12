@@ -56,7 +56,7 @@
      <tx:attributes>
          <!--以find结尾的方法，都为只读也就不需要事务-->
         <tx:method name="*find" read-only="true"/>
-        <tx:method name="*" rollback-for="Exception"></tx:method>
+        <tx:method name="upadteUser" rollback-for="Exception"></tx:method>
      </tx:attributes>
    </tx:advice>
 
