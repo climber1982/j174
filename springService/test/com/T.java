@@ -19,4 +19,16 @@ public class T {
        System.out.println(u);
 
     }
+    @Test
+    public void t(){
+        ClassPathXmlApplicationContext context=
+                new ClassPathXmlApplicationContext("application.xml");
+        IUserService service= (IUserService) context.getBean("userService");
+         UserEntity userEntity=new UserEntity();
+         userEntity.setUserName("liubei");
+         userEntity.setAge(20);
+         userEntity.setPassword("12345");
+          service.upadteUser(userEntity);
+    }
+
 }

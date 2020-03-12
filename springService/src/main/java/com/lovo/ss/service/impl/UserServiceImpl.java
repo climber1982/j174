@@ -22,4 +22,10 @@ public class UserServiceImpl implements IUserService {
     public UserEntity getUserByName(String userName) {
         return userDao.getUserByName(userName);
     }
+
+
+    public void upadteUser(UserEntity userEntity) {
+        userDao.addUser(userEntity);
+        userDao.updateUser(userEntity);
+    }
 }

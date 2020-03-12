@@ -17,4 +17,6 @@ public interface IUserService {
      * @return
      */
     public UserEntity getUserByName(String userName);
+
+    public void upadteUser(UserEntity userEntity);
 }

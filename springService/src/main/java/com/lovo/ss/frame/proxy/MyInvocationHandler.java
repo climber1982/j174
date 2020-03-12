@@ -17,6 +17,7 @@ public class MyInvocationHandler implements InvocationHandler {
         //调用目标方法
 
       Object objinfo=  method.invoke(obj,args);
+        System.out.println(proxy.getClass().getSimpleName());
         long e= System.currentTimeMillis();
         System.out.println("调用"+method.getName()+"所用的时间:"+(e-s));
         return objinfo;

@@ -17,4 +17,8 @@ public interface IUserDao {
      * @return
      */
     public UserEntity getUserByName(String userName);
+
+    public  void addUser(UserEntity user);
+
+    public  void updateUser(UserEntity user);
 }

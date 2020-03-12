@@ -12,4 +12,13 @@
     <select id="getUserByName" resultType="userEntity">
             select * from sys_user where userName=#{param1}
     </select>
+
+    <insert id="addUser" parameterType="userEntity">
+         insert into sys_user(userName, password, age)
+         values (#{userName},#{password},#{age})
+    </insert>
+
+    <update id="updateUser" parameterType="userEntity">
+        update sys_user1 set age=100 where userName=#{userName}
+    </update>
 </mapper>
