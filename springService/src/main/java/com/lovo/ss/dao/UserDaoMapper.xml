@@ -19,6 +19,6 @@
     </insert>
 
     <update id="updateUser" parameterType="userEntity">
-        update sys_user1 set age=100 where userName=#{userName}
+        update sys_user userDaoMapper.xmlset age=100 where userName=#{userName}
     </update>
 </mapper>

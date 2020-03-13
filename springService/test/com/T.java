@@ -25,7 +25,7 @@ public class T {
                 new ClassPathXmlApplicationContext("application.xml");
         IUserService service= (IUserService) context.getBean("userService");
          UserEntity userEntity=new UserEntity();
-         userEntity.setUserName("liubei");
+         userEntity.setUserName("赵云2");
          userEntity.setAge(20);
          userEntity.setPassword("12345");
           service.upadteUser(userEntity);
