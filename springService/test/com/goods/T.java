@@ -21,9 +21,9 @@ public class T {
     public  void tsell(){
          //模拟一个订单
         OrderEntity order=new OrderEntity();
-        order.setGoodsName("JAVA2");
+        order.setGoodsName("JAVA编程思想2");
         //商品编号
-        order.setGoodsNum("J_20200313_003");
+        order.setGoodsNum("J_20200313_004");
         order.setSellPrice(50);
         //执行
         boolean bl= false;
@@ -38,7 +38,7 @@ public class T {
    @Test
     public  void tgoods(){
        OrderEntity order=new OrderEntity();
-       order.setGoodsName("JAVA");
+       order.setGoodsName("JAVA书");
        //商品编号
        order.setGoodsNum("J_20200313_001");
        order.setSellPrice(50);
