@@ -11,13 +11,14 @@
     <modules>
         <module>springmvc</module>
         <module>springService</module>
+        <module>hibernateJ174</module>
     </modules>
 <dependencies>
     <!-- junit -->
     <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>4.11</version>
+        <version>4.12</version>
 
     </dependency>
 
