@@ -1,4 +1,4 @@
-package com.lovo.hibernate.entity;
+package com.lovo.hibernate.entity.many;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -6,20 +6,30 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "sys_teacher")
-public class TeacherEntity {
+@Table(name = "m_teacher")
+public class MTeacherEntity {
     @Id
     @Column(name = "t_id",length = 32)
-    @GenericGenerator(name = "tuuid",strategy = "uuid")
-    @GeneratedValue(generator = "tuuid")
+    @GenericGenerator(name = "tmuuid",strategy = "uuid")
+    @GeneratedValue(generator = "tmuuid")
     private  String teacherId;
     @Column(name = "t_name",length = 48)
     private  String teacherName;
     @Column(name = "t_class",length = 48)
     private String teacherClass;
-    //mappedBy 把映射权利交给多的一方mappedBy = "多的一方，持有的一的引用"
-    @OneToMany(mappedBy = "teacher",fetch = FetchType.EAGER)
-    private Set<StudentEntity> setStus;
+    @ManyToMany
+    //注解中间表
+    @JoinTable(name = "m_s_t",joinColumns ={@JoinColumn(name ="t_id" )}
+            ,inverseJoinColumns = {@JoinColumn(name = "s_id")})
+    private Set<MStudentEntity> studentsets;
+
+    public Set<MStudentEntity> getStudentsets() {
+        return studentsets;
+    }
+
+    public void setStudentsets(Set<MStudentEntity> studentsets) {
+        this.studentsets = studentsets;
+    }
 
     public String getTeacherId() {
         return teacherId;
@@ -43,13 +53,5 @@ public class TeacherEntity {
 
     public void setTeacherClass(String teacherClass) {
         this.teacherClass = teacherClass;
-    }
-
-    public Set<StudentEntity> getSetStus() {
-        return setStus;
-    }
-
-    public void setSetStus(Set<StudentEntity> setStus) {
-        this.setStus = setStus;
     }
 }

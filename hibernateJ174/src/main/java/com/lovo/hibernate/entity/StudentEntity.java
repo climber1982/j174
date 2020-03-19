@@ -14,10 +14,13 @@ public class StudentEntity {
     private  String studentId;
     @Column(name = "s_name",length = 48)
     private  String studentName;
+    /**
+     * fetch 抓取策略-急加载或懒加载，cascade级联操作
+     */
+    //@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @ManyToOne
     @JoinColumn(name = "f_t_id")
     private  TeacherEntity teacher;
-
 
     public String getStudentId() {
         return studentId;

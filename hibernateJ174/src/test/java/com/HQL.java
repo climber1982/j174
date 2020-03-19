@@ -1,0 +1,108 @@
+package com;
+
+import com.lovo.hibernate.dto.TeacherDto;
+import com.lovo.hibernate.entity.TeacherEntity;
+import com.lovo.hibernate.util.HSession;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.List;
+import java.util.Map;
+
+public class HQL {
+
+    Session session=null;
+    Transaction tr= null;
+    @Before
+    public void before(){
+        session= HSession.createSession();
+        tr= session.getTransaction();
+        tr.begin();
+    }
+
+    @Test
+   public void hql1(){
+        String hql="select t from TeacherEntity t";
+     //获得query对象
+    Query query= session.createQuery(hql);
+    //查询所以
+     List<Object> list=   query.list();
+      for(Object obj:list){
+          System.out.println(
+           ((TeacherEntity)obj).getTeacherName());
+      }
+   }
+    @Test
+    public void hql2(){
+        String hql="from TeacherEntity";
+   List<TeacherEntity> list=
+        session.createQuery(hql)
+                .list();
+       for(TeacherEntity t:list){
+           System.out.println(t.getTeacherName()+"/"+t.getTeacherClass());
+       }
+    }
+
+    @Test
+    public  void hql3(){
+       String hql="from TeacherEntity where teacherClass=?";
+     List<TeacherEntity> list=
+       session.createQuery(hql)
+               .setParameter(0,"JAVA")//替换占位符
+               .list();
+        for(TeacherEntity t:list){
+            System.out.println(t.getTeacherName()+"/"+t.getTeacherClass());
+        }
+    }
+
+    @Test
+    public void hql4(){
+        String hql="select teacherName,teacherClass from TeacherEntity where teacherClass=?";
+        List<Object[]> list=
+         session.createQuery(hql)
+                 .setParameter(0,"JAVA")
+                 .list();
+        for(Object[] objs:list){
+            System.out.println(objs[0].toString()+"/"+objs[1].toString());
+        }
+    }
+    @Test
+    public void hql5(){
+        String hql="select new com.lovo.hibernate.dto.TeacherDto(teacherName,teacherClass) " +
+                "from TeacherEntity where teacherClass=?";
+        List<TeacherDto> list=
+          session.createQuery(hql)
+                  .setParameter(0,"JAVA")
+                  .list();
+        for (TeacherDto dto:list){
+            System.out.println(dto.getUserName()+"/"+dto.getUserClass());
+        }
+    }
+
+    @Test
+    public void hql6(){
+        String hql="select new map(teacherName,teacherClass) " +
+                "from TeacherEntity where teacherClass=?";
+        List<Map> list=
+                session.createQuery(hql)
+                        .setParameter(0,"JAVA")
+                        .list();
+         for(Map map:list){
+             System.out.println(map.get("0")+"/"+map.get("1"));
+         }
+    }
+
+
+
+
+
+    @After
+    public void after(){
+        tr.commit();
+        session.close();
+    }
+}

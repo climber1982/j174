@@ -1,6 +1,7 @@
 package com.lovo.hibernate.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity  //被Hibernate管理的标记
 @Table(name ="sys_user" ) //映射表
@@ -18,7 +19,8 @@ public class UserEntity {
     private  String addDate;
     @Column(columnDefinition = "TEXT")
     private  String  info;
-
+    @OneToMany(mappedBy = "user")
+    private Set<RoleUserEntity> roleUserSets;
 
 
 
@@ -68,5 +70,13 @@ public class UserEntity {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    public Set<RoleUserEntity> getRoleUserSets() {
+        return roleUserSets;
+    }
+
+    public void setRoleUserSets(Set<RoleUserEntity> roleUserSets) {
+        this.roleUserSets = roleUserSets;
     }
 }

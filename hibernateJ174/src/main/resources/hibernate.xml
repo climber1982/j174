@@ -22,5 +22,9 @@
         <mapping class="com.lovo.hibernate.entity.RoleEntity"></mapping>
         <mapping class="com.lovo.hibernate.entity.StudentEntity"></mapping>
         <mapping class="com.lovo.hibernate.entity.TeacherEntity"></mapping>
+        <mapping class="com.lovo.hibernate.entity.RoleUserEntity"></mapping>
+        <mapping class="com.lovo.hibernate.entity.many.MStudentEntity"></mapping>
+        <mapping class="com.lovo.hibernate.entity.many.MTeacherEntity"></mapping>
+
     </session-factory>
 </hibernate-configuration>
