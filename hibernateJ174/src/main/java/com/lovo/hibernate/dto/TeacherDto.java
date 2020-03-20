@@ -4,6 +4,8 @@ public class TeacherDto {
 
     private  String userName;
     private  String userClass;
+
+
     public TeacherDto(){}
     public TeacherDto(String userName, String userClass) {
         this.userName = userName;

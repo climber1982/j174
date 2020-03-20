@@ -25,10 +25,12 @@ public class ORMT {
     }
     @Test
     public  void savaT(){
-        TeacherEntity t=new TeacherEntity();
-        t.setTeacherName("薛老师");
-        t.setTeacherClass("WEB");
-        session.save(t);
+        for(int i=0;i<20;i++) {
+            TeacherEntity t = new TeacherEntity();
+            t.setTeacherName("薛老师"+i);
+            t.setTeacherClass("WEB"+i);
+            session.save(t);
+        }
 
     }
     @Test

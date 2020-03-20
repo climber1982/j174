@@ -6,6 +6,8 @@ import com.lovo.hibernate.util.HSession;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.hibernate.query.internal.NativeQueryImpl;
+import org.hibernate.transform.Transformers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -49,6 +51,7 @@ public class HQL {
 
     @Test
     public  void hql3(){
+
        String hql="from TeacherEntity where teacherClass=?";
      List<TeacherEntity> list=
        session.createQuery(hql)
@@ -86,15 +89,44 @@ public class HQL {
     @Test
     public void hql6(){
         String hql="select new map(teacherName,teacherClass) " +
-                "from TeacherEntity where teacherClass=?";
+                "from TeacherEntity where teacherClass like ?";
         List<Map> list=
                 session.createQuery(hql)
-                        .setParameter(0,"JAVA")
+                        .setParameter(0,"JA%")
                         .list();
          for(Map map:list){
              System.out.println(map.get("0")+"/"+map.get("1"));
          }
     }
+    @Test
+    public void hql7(){
+        String hql="select new map(s.studentName,t.teacherName,t.teacherClass) " +
+                "from StudentEntity s " +
+                " left join s.teacher t where t.teacherName=?";
+         List<Map> list=
+           session.createQuery(hql)
+                   .setParameter(0,"陈老师")
+                   .list();
+        System.out.println(list.size());
+    }
+    @Test
+    public void hql8(){
+        int currentpage=2;
+        int pageCount=5;
+        String hql="from TeacherEntity where teacherName like ?";
+        List<TeacherEntity> list=
+                session.createQuery(hql)
+                .setParameter(0,"薛%")
+                .setFirstResult((currentpage-1)*pageCount) //起始位置
+                .setMaxResults(pageCount) //每页显示的行数
+                .list();
+        for (TeacherEntity t:list){
+            System.out.println(t.getTeacherName());
+        }
+
+    }
+
+
 
 
 
