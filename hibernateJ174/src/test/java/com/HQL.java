@@ -109,6 +109,7 @@ public class HQL {
                    .list();
         System.out.println(list.size());
     }
+    //分页查询
     @Test
     public void hql8(){
         int currentpage=2;
@@ -123,7 +124,36 @@ public class HQL {
         for (TeacherEntity t:list){
             System.out.println(t.getTeacherName());
         }
+    }
+    //查询对象
+    @Test
+    public void hql9(){
+        String hql="from TeacherEntity where teacherName=?";
+      TeacherEntity t=
+              (TeacherEntity) session.createQuery(hql)
+                      .setParameter(0,"陈老师")
+                      .uniqueResult();
+        System.out.println(t.getTeacherClass());
+    }
 
+    //删除
+    @Test
+    public  void hql10(){
+        String hql="delete from TeacherEntity where teacherName=?";
+     int i=   session.createQuery(hql)
+                .setParameter(0,"薛老师19")
+                .executeUpdate(); //执行修改、删除返回受影响的行数
+        System.out.println(i);
+    }
+    //修改
+    @Test
+    public  void hql11(){
+      String hql="update TeacherEntity set teacherClass=? where teacherName=?";
+     int i= session.createQuery(hql)
+              .setParameter(0,"WEB2")
+              .setParameter(1,"薛老师18")
+              .executeUpdate();
+        System.out.println(i);
     }
 
 
