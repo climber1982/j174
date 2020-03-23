@@ -1,5 +1,7 @@
 package com.lovo.sh.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -7,8 +9,12 @@ import java.util.Set;
 @Table(name ="sys_user" ) //映射表
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  int userId;
+    //自定义UUID
+    @GenericGenerator(name = "uuuid",strategy = "uuid")
+    //给id一个生产策略,自定义生成策略
+    @GeneratedValue(generator = "uuuid")
+    @Column(name = "u_id",length = 32)
+    private  String userId;
     @Column(name="u_name",length = 48,nullable = false,unique =true )
     private String userName;
    // @Column(insertable = false)
@@ -21,13 +27,11 @@ public class UserEntity {
     private  String  info;
 
 
-
-
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -70,6 +74,4 @@ public class UserEntity {
     public void setInfo(String info) {
         this.info = info;
     }
-
-
 }

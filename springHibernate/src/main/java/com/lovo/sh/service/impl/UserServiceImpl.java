@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service(value = "userService")
 @Transactional(rollbackFor = {Exception.class})
 public class UserServiceImpl implements IUserService {
@@ -16,5 +18,17 @@ public class UserServiceImpl implements IUserService {
 
     public void savaUser(UserEntity userEntity) {
         userDao.savaObject(userEntity);
+    }
+
+    public void delUser(UserEntity userEntity) {
+        userDao.delObject(userEntity);
+    }
+
+    public void delUser(String id) {
+        userDao.delObjectById(id);
+    }
+   @Transactional(readOnly = true)
+    public List<UserEntity> findAll() {
+        return userDao.findAll();
     }
 }
