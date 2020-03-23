@@ -12,6 +12,7 @@
         <module>springmvc</module>
         <module>springService</module>
         <module>hibernateJ174</module>
+        <module>springHibernate</module>
     </modules>
 <dependencies>
     <!-- junit -->
