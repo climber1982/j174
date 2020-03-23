@@ -27,7 +27,7 @@ public class TestHibernate {
      IUserService userService= (IUserService) context.getBean("userService");
         UserEntity userEntity=new UserEntity();
         userEntity.setAddDate("2020-03-23");
-        userEntity.setUserName("赵云");
+        userEntity.setUserName("赵云2");
         userEntity.setAge(20);
      userService.savaUser(userEntity);
     }

@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Properties;
 @Repository(value = "basicDao")
-public class BasicDao {
+public class BasicDao<T> {
 
     @Autowired
   private LocalSessionFactoryBean localSessionFactoryBean;
@@ -22,4 +22,12 @@ public class BasicDao {
     public Session getCurrentSession(){
         return  localSessionFactoryBean.getObject().getCurrentSession();
     }
+
+    /**
+     * 保存
+     * @param t
+     */
+     public void  savaObject(T t){
+           this.getCurrentSession().save(t);
+     }
 }
