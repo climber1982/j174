@@ -1,6 +1,7 @@
 package com.lovo.sh.dao;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -71,5 +72,24 @@ public class BasicDao<T> {
                  .list();
 
      }
-   //有条件的查询  参数，数组，map ，Strings
+
+    /**
+     * 根据ID获取对象
+     * @param id
+     * @return
+     */
+    public  T getObjectById(String id){
+         return
+                 this.getCurrentSession()
+                 .get(cl,id);
+    }
+
+    public List<T> getListByArray(String hql,Object[] objs){
+        Query query= this.getCurrentSession().createQuery(hql);
+        for(int i=0;i<objs.length;i++){
+            query.setParameter(i,objs[i]);
+        }
+      return   query.list();
+    }
+
 }

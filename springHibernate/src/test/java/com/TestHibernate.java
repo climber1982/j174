@@ -55,4 +55,13 @@ public class TestHibernate {
         System.out.println(userEntity.getUserName());
     }
     }
+
+    @Test
+    public void findListByArray(){
+     List<UserEntity> list=
+       userService.findListByArray(new Object[]{10});
+     for (UserEntity user:list){
+         System.out.println(user.getUserName());
+     }
+    }
 }

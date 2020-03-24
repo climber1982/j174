@@ -31,4 +31,11 @@ public class UserServiceImpl implements IUserService {
     public List<UserEntity> findAll() {
         return userDao.findAll();
     }
+
+    @Transactional(readOnly = true)
+    public List<UserEntity> findListByArray(Object[] objects) {
+      String hql="from UserEntity where age>?";
+     return userDao.getListByArray(hql,objects);
+
+    }
 }

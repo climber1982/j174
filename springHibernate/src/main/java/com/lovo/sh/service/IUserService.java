@@ -11,4 +11,5 @@ public interface IUserService {
     public  void delUser(UserEntity userEntity);
     public  void delUser(String id);
     public List<UserEntity> findAll();
+    public List<UserEntity> findListByArray(Object[] objects);
 }
