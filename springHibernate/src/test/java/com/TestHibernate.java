@@ -23,8 +23,7 @@ public class TestHibernate {
         ClassPathXmlApplicationContext context
                 =new ClassPathXmlApplicationContext("application.xml");
      BasicDao dao= (BasicDao) context.getBean("basicDao");
-        System.out.println(dao.getOpenSession());
-       System.out.println(dao.getCurrentSession());
+       dao.test();
     }
     @Test
     public void savaUser(){
@@ -59,7 +58,7 @@ public class TestHibernate {
     @Test
     public void findListByArray(){
      List<UserEntity> list=
-       userService.findListByArray(new Object[]{10});
+       userService.findListByArray(new Object[]{10,"赵云%"});
      for (UserEntity user:list){
          System.out.println(user.getUserName());
      }

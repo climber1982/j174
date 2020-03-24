@@ -1,6 +1,8 @@
 package com.lovo.sh.dao;
 
+import com.lovo.sh.entity.UserEntity;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -92,4 +94,30 @@ public class BasicDao<T> {
       return   query.list();
     }
 
+
+    public  void test(){
+       Session s= this.getOpenSession();
+        Transaction tx=  s.getTransaction();
+        tx.begin();
+        UserEntity user=
+       s.get(UserEntity.class,"4028808e710658120171065817a50000");
+        System.out.println(user.getUserName());
+        try {
+            Thread.sleep(1000*10);
+            s.clear(); //清空缓存
+            s.flush();//刷新缓存
+            tx.commit();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        UserEntity user2=
+                s.get(UserEntity.class,"4028808e710658120171065817a50000");
+        System.out.println(user2.getUserName());
+        UserEntity user3=
+                s.get(UserEntity.class,"4028808e710658120171065817a50000");
+        System.out.println(user3.getUserName());
+
+        s.close();
+
+    }
 }

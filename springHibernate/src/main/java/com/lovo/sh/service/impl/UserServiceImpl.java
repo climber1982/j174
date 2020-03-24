@@ -34,8 +34,10 @@ public class UserServiceImpl implements IUserService {
 
     @Transactional(readOnly = true)
     public List<UserEntity> findListByArray(Object[] objects) {
-      String hql="from UserEntity where age>?";
-     return userDao.getListByArray(hql,objects);
+      String hql="from UserEntity where age>? or userName like ?";
+
+
+      return userDao.getListByArray(hql,objects);
 
     }
 }
