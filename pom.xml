@@ -13,6 +13,7 @@
         <module>springService</module>
         <module>hibernateJ174</module>
         <module>springHibernate</module>
+        <module>springDataJPAJ174</module>
     </modules>
 <dependencies>
     <!-- junit -->

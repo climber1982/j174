@@ -9,6 +9,7 @@
         <module name="hibernateJ174" />
         <module name="springService" />
         <module name="springHibernate" />
+        <module name="springDataJPAJ174" />
         <module name="springmvc" />
       </profile>
     </annotationProcessing>
