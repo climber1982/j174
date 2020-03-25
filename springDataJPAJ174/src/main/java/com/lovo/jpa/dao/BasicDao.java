@@ -85,7 +85,6 @@ public class BasicDao {
                 .unwrap(NativeQueryImpl.class)
                 .setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP)
                 .list();
-
     }
 
 }
