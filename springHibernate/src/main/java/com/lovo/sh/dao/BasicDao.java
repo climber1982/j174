@@ -120,4 +120,8 @@ public class BasicDao<T> {
         s.close();
 
     }
+
+    public void t(){
+        this.getCurrentSession().getNamedProcedureCall("");
+    }
 }
