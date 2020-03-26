@@ -5,9 +5,12 @@ import com.lovo.jpa.dto.UserDto;
 import com.lovo.jpa.entity.UserEntity;
 import com.lovo.jpa.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.print.Pageable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -49,5 +52,53 @@ public class UserServicveImpl implements IUserService {
 
     public void delUserById(String id) {
         userDao.deleteById(id);
+    }
+
+    @Transactional(rollbackFor = {Exception.class})
+    public void savaList(List<UserEntity> list) {
+        userDao.saveAll(list);
+    }
+
+    @Override
+    public List<UserEntity> getPageList(int age, PageRequest paeable) {
+        return userDao.getPageList(age,paeable);
+    }
+
+    @Override
+    public List<UserEntity> getSQLList(int age) {
+        return userDao.getSQLList(age);
+    }
+
+    @Override
+    public List<UserEntity> getSqlObjectArray(int age) {
+     List<Object[]> listObjes=   userDao.getSqlObjectArray(age);
+        List<UserEntity> list=null;
+      //如果查询结果不为空
+     if(!listObjes.isEmpty()&&null!=listObjes){
+         list=new ArrayList<>();
+         //把结果放入到List<UserEntity>
+         for(Object[] objs:listObjes){
+             UserEntity userEntity=new UserEntity();
+             userEntity.setUserName(objs[0].toString());
+             userEntity.setPassword(objs[1].toString());
+             list.add(userEntity);
+         }
+     }
+        return list;
+    }
+
+    @Transactional(rollbackFor = {Exception.class})
+    public int delUserByName(String userName) {
+        return userDao.delUserByName(userName);
+    }
+
+    @Transactional(rollbackFor = {Exception.class})
+    public int updateUserByName(String userName) {
+        return userDao.updateUserByName(userName);
+    }
+
+    @Override
+    public List<UserEntity> findByUserNameOrAge(String userName, int age) {
+        return userDao.findByUserNameOrAge(userName,age);
     }
 }

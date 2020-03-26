@@ -7,10 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="springService" />
-        <module name="springHibernate" />
-        <module name="springDataJPAJ174" />
-        <module name="hibernateJ174" />
         <module name="springmvc" />
+        <module name="springDataJPAJ174" />
+        <module name="springHibernate" />
+        <module name="hibernateJ174" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8" />

@@ -8,7 +8,10 @@ import com.lovo.jpa.service.IUserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.data.domain.PageRequest;
 
+import java.awt.print.Pageable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -68,6 +71,18 @@ public class JPAQueryT {
         userService.savaUser(user);
     }
     @Test
+    public void savaUserList(){
+      List<UserEntity> list=new ArrayList<>();
+      for(int i=0;i<15;i++){
+          UserEntity user=new UserEntity();
+          user.setAge(30);
+          user.setUserName("马超"+i);
+          user.setPassword("mc12345"+i);
+          list.add(user);
+      }
+       userService.savaList(list);
+    }
+    @Test
     public  void findList(){
      List<UserEntity> list=   userService.findList();
         System.out.println(list.size());
@@ -75,6 +90,36 @@ public class JPAQueryT {
     @Test
     public  void delUserById(){
          userService.delUserById("4028808e710658120171065817a50000");
+    }
+    @Test
+    public void getPageList(){
+        PageRequest pageable=PageRequest.of(1,5);
+      List<UserEntity>  list= userService.getPageList(10,pageable);
+        System.out.println(list.size());
+    }
+    @Test
+    public void  getSQLList(){
+     List<UserEntity> list=   userService.getSQLList(30);
+        System.out.println(list.size());
+    }
+    @Test
+    public void getSqlObjectArray(){
+        List<UserEntity> list=   userService.getSqlObjectArray(30);
+        System.out.println(list.size());
+    }
+    @Test
+    public  void delUserByName(){
+     int i=   userService.delUserByName("马超");
+        System.out.println(i);
+    }
+   @Test
+    public  void upateUserByName(){
+        userService.updateUserByName("马超0");
+    }
+    @Test
+    public  void findByUserNameOrAge(){
+     List<UserEntity> list=    userService.findByUserNameOrAge("马超",30);
+        System.out.println(list.size());
     }
 }
 
