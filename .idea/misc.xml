@@ -4,6 +4,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/springmvc" />
     <file type="web" url="file://$PROJECT_DIR$/springService" />
+    <file type="web" url="file://$PROJECT_DIR$/sss" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
