@@ -3,7 +3,7 @@ package com.lovo.spring.dto;
 import javax.persistence.Column;
 
 public class PowerDto {
-
+     //powerName
     private  String powerName;
     private String powerUri;
     private  String userName;
